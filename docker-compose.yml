@@ -1,0 +1,9 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_DB: velai
+      POSTGRES_USER: velai
+      POSTGRES_PASSWORD: velai
+    ports:
+      - "5432:5432"
