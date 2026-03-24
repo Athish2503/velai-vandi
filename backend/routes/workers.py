@@ -3,6 +3,8 @@ from sqlalchemy.orm import Session
 from pydantic import BaseModel
 from database import get_db
 from models import Worker
+from ai.extractor import extract_skills
+from ai.embedder import embed
 
 router = APIRouter(prefix="/workers", tags=["workers"])
 
@@ -15,10 +17,14 @@ class WorkerSchema(BaseModel):
 
 @router.post("/register")
 def register_worker(worker: WorkerSchema, db: Session = Depends(get_db)):
-    # Using null for vector until AI is ready
+    # AI Pipeline: Extract keywords -> Embed -> pgvector
+    skills_text = " ".join(extract_skills(worker.skills))
+    vector = embed(skills_text)
+
     db_worker = Worker(
         name=worker.name,
         skills=worker.skills,
+        skill_vector=vector,
         experience=worker.experience,
         lat=worker.lat,
         lon=worker.lon
