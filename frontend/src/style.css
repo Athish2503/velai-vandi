@@ -1,16 +1,36 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-lavender: #D1CCDC;
+  --color-brand-charcoal: #424C55;
+  --color-brand-blush: #F5EDF0;
+  --color-brand-taupe: #886F68;
+  --color-brand-mocha: #3D2C2E;
+}
+
 :root {
-  --primary: #58cc02;
-  --primary-shadow: #58a700;
-  --secondary: #1cb0f6;
-  --secondary-shadow: #1899d6;
-  --danger: #ff4b4b;
+  /* Applying the new palette with playful shadow variants */
+  --primary: #424C55;        /* Charcoal Blue */
+  --primary-shadow: #2a3138;
+  --primary-hover: #505d68;
+
+  --secondary: #886F68;      /* Taupe */
+  --secondary-shadow: #634f49;
+  --secondary-hover: #9c8078;
+
+  --accent: #D1CCDC;         /* Lavender */
+  --accent-shadow: #b2abc2;
+  --accent-hover: #e0dced;
+
+  --danger: #ff4b4b;         /* Keeping danger red for standard UI errors */
   --danger-shadow: #ea2b2b;
-  --background: #ffffff;
-  --text-main: #4b4b4b;
-  --text-light: #777777;
-  --border-color: #e5e5e5;
+
+  --background: #F5EDF0;     /* Lavender Blush */
+  --surface: #ffffff;
+
+  --text-main: #3D2C2E;      /* Deep Mocha */
+  --text-light: #6a575a;     /* Lighter Mocha for secondary text */
+  --border-color: #e2d8dc;   /* Slightly darker than blush */
 }
 
 body {
@@ -24,25 +44,29 @@ body {
 }
 
 .btn-primary {
-  @apply bg-[#58cc02] text-white border-[#58cc02] border-b-[#58a700] hover:bg-[#61e002] hover:border-[#61e002];
+  @apply bg-[#424C55] text-white border-[#424C55] border-b-[#2a3138] hover:bg-[#505d68] hover:border-[#505d68];
 }
 
 .btn-secondary {
-  @apply bg-[#1cb0f6] text-white border-[#1cb0f6] border-b-[#1899d6] hover:bg-[#20c3ff] hover:border-[#20c3ff];
+  @apply bg-[#886F68] text-white border-[#886F68] border-b-[#634f49] hover:bg-[#9c8078] hover:border-[#9c8078];
+}
+
+.btn-accent {
+  @apply bg-[#D1CCDC] text-[#3D2C2E] border-[#D1CCDC] border-b-[#b2abc2] hover:bg-[#e0dced] hover:border-[#e0dced];
 }
 
 .btn-outline {
-  @apply bg-white text-[#1cb0f6] border-[#e5e5e5] hover:bg-gray-50;
+  @apply bg-white text-[#424C55] border-[#e2d8dc] border-b-[#e2d8dc] hover:bg-[#F5EDF0];
 }
 
 .card {
-  @apply bg-white border-2 border-[#e5e5e5] rounded-2xl p-6 shadow-sm transition-transform hover:-translate-y-1;
+  @apply bg-[#ffffff] border-2 border-[#e2d8dc] rounded-2xl p-6 shadow-sm transition-transform hover:-translate-y-1;
 }
 
 .input-field {
-  @apply w-full bg-[#f7f7f7] border-2 border-[#e5e5e5] rounded-xl px-4 py-3 focus:outline-none focus:border-[#1cb0f6] focus:bg-white transition-colors text-[#4b4b4b] font-medium;
+  @apply w-full bg-[#F5EDF0] border-2 border-[#e2d8dc] rounded-xl px-4 py-3 focus:outline-none focus:border-[#424C55] focus:bg-white transition-colors text-[#3D2C2E] font-medium;
 }
 
 .input-label {
-  @apply block font-bold text-[#777777] mb-2 uppercase text-sm tracking-wide;
+  @apply block font-bold text-[#886F68] mb-2 uppercase text-sm tracking-wide;
 }
